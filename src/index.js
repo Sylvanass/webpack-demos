@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import './index.css';
 import './index.less'
-import cat from './assets/cat.jpg';
+import Cat from './assets/cat.jpg';
+import Data from './data/data.xml';
 
 function component() {
   var parent = document.createElement('div');
@@ -23,8 +24,12 @@ function component() {
   location.classList.add('icon-location2');
   parent.appendChild(location);
 
+  var data = document.createElement('p');
+  data.innerHTML = JSON.stringify(Data);
+  parent.appendChild(data);
+
   var img = new Image();
-  img.src = cat;
+  img.src = Cat;
   parent.appendChild(img);
 
   return parent;
