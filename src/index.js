@@ -1,14 +1,22 @@
 import _ from 'lodash';
 import './index.css';
+import './index.less'
 
 function component() {
-  var el = document.createElement('div');
-  el.innerHTML = _.join([
+  var parent = document.createElement('div');
+  parent.classList.add('hello');
+
+  var title = document.createElement('p');
+  title.innerHTML = _.join([
     "Hello", 'webpack!', 'Build with configuration file.'
   ], ' ')
-  el.classList.add('hello');
+  parent.appendChild(title)
 
-  return el;
+  var des = document.createElement('p');
+  des.innerHTML = 'Load less';
+  parent.appendChild(des)
+
+  return parent;
 }
 
 document.body.appendChild(component());
