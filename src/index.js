@@ -3,7 +3,7 @@ import _ from 'lodash';
 function component() {
   var el = document.createElement('div');
   el.innerHTML = _.join([
-    "Hello", 'webpack'
+    "Hello", 'webpack!', 'Build with configuration file.'
   ], ' ')
 
   return el;
