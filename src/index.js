@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import './index.css';
 import './index.less'
-import cat from './cat.jpg';
+import cat from './assets/cat.jpg';
 
 function component() {
   var parent = document.createElement('div');
@@ -16,7 +16,12 @@ function component() {
   var des = document.createElement('p');
   des.innerHTML = 'Load less';
   des.classList.add('highlight');
-  parent.appendChild(des)
+  parent.appendChild(des);
+
+  var location = document.createElement('p');
+  location.innerHTML = 'Shanghai, China';
+  location.classList.add('icon-location2');
+  parent.appendChild(location);
 
   var img = new Image();
   img.src = cat;
