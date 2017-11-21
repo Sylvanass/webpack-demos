@@ -1,8 +1,11 @@
 import _ from 'lodash';
+
 import './index.less';
 import Cat from './assets/cat.jpg';
 import GitHub from './assets/github.png';
 import Data from './data/data.xml';
+
+import sayHello from './hello.js'
 
 function component() {
   var parent = document.createElement('div');
@@ -41,6 +44,11 @@ function component() {
   cat.src = Cat;
   div.appendChild(cat);
   parent.appendChild(div);
+
+  var btn = document.createElement('button');
+  btn.innerHTML = 'Click me and check the console!';
+  btn.onclick = sayHello;
+  parent.appendChild(btn);
 
   return parent;
 }
