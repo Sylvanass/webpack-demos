@@ -7,6 +7,7 @@ module.exports = {
     app: './src/index.js',
     hello: './src/hello.js'
   },
+  devtool: 'inline-source-map',
   output: {
     filename: '[name].bundle.js',
     path: path.join(__dirname, 'dist')
