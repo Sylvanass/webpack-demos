@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -10,11 +9,13 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    index: './src/index.js',
-    math: './src/modules/math.js'
+    main: './src/index.js',
+    vendor: [
+      'lodash'
+    ]
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash].js',
     path: resolve('dist')
   },
   module: {
@@ -44,13 +45,15 @@ module.exports = {
     }]
   },
   plugins: [
-    new CleanWebpackPlugin([resolve('dist')]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: resolve('public/index.html')
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common'
+      name: 'vendor'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime'
     })
   ]
 };

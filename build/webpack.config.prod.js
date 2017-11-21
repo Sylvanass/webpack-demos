@@ -1,5 +1,7 @@
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const common = require('./webpack.config.base.js');
@@ -16,6 +18,9 @@ module.exports = merge(common, {
     }]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist'], {
+      root: path.resolve(__dirname, '../')
+    }),
     new UglifyJSPlugin({
       sourceMap: true
     }),
@@ -27,6 +32,7 @@ module.exports = merge(common, {
     new ExtractTextPlugin({
       filename: '[name].[contenthash:5].css',
       allChunks: true
-    })
+    }),
+    new webpack.HashedModuleIdsPlugin()
   ]
 });
