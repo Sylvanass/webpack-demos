@@ -8,6 +8,9 @@ module.exports = {
     hello: './src/hello.js'
   },
   devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.join(__dirname, 'dist')
