@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -9,7 +10,8 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/index.js'
+    index: './src/index.js',
+    math: './src/modules/math.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -42,10 +44,13 @@ module.exports = {
     }]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([resolve('dist')]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: resolve('public/index.html')
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common'
     })
   ]
 };

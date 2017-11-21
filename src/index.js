@@ -1,11 +1,11 @@
 import {
   cube
-} from './math.js';
+} from './modules/math.js';
 import './index.less';
 import Cat from './assets/cat.jpg';
 import GitHub from './assets/github.png';
 import Data from './data/data.xml';
-import sayHello from './hello.js'
+import sayHello from './modules/hello.js'
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
@@ -65,7 +65,7 @@ function render() {
 render();
 
 if (module.hot) {
-  module.hot.accept('./hello.js', function() {
+  module.hot.accept('./modules/hello.js', function() {
     console.log('Accepting the updated sayHello module!');
     document.body.innerHTML = '';
     render();
