@@ -1,5 +1,6 @@
-import _ from 'lodash';
-
+import {
+  cube
+} from './math.js';
 import './index.less';
 import Cat from './assets/cat.jpg';
 import GitHub from './assets/github.png';
@@ -10,13 +11,6 @@ import sayHello from './hello.js'
 function component() {
   var parent = document.createElement('div');
   parent.classList.add('hello');
-
-  // basic
-  var title = document.createElement('p');
-  title.innerHTML = _.join([
-    "Hello", 'webpack!', 'Build with configuration file.'
-  ], ' ')
-  parent.appendChild(title)
 
   // less
   var des = document.createElement('p');
@@ -49,6 +43,14 @@ function component() {
   btn.innerHTML = 'Click me and check the console!';
   btn.onclick = sayHello;
   parent.appendChild(btn);
+
+  // tree shaking
+  var pre = document.createElement('pre');
+  pre.innerHTML = [
+    'Hello webpack!',
+    '5 cubed is equal to ' + cube(5)
+  ].join('\n\n');
+  parent.appendChild(pre);
 
   return parent;
 }
