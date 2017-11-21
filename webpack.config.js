@@ -4,12 +4,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
-    hello: './src/hello.js'
+    app: './src/index.js'
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    historyApiFallback: true,
+    host: '0.0.0.0'
   },
   output: {
     filename: '[name].bundle.js',

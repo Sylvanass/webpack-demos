@@ -40,6 +40,10 @@
   content: "\e967";
 }
 
+body {
+  background: #ddd;
+}
+
 .hello {
   color: red;
 }

@@ -53,4 +53,16 @@ function component() {
   return parent;
 }
 
-document.body.appendChild(component());
+function render() {
+  document.body.appendChild(component());
+}
+
+render();
+
+if (module.hot) {
+  module.hot.accept('./hello.js', function() {
+    console.log('Accepting the updated sayHello module!');
+    document.body.innerHTML = '';
+    render();
+  })
+}
