@@ -15,7 +15,12 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'less-loader']
     }, {
       test: /\.(jpg|png|gif)$/,
-      use: ['file-loader']
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 8192
+        }
+      }]
     }, {
       test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
       use: ['file-loader']
