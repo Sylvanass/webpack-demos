@@ -5,8 +5,11 @@ import './index.less';
 import Cat from './assets/cat.jpg';
 import GitHub from './assets/github.png';
 import Data from './data/data.xml';
-
 import sayHello from './hello.js'
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
+}
 
 function component() {
   var parent = document.createElement('div');

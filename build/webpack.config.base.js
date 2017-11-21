@@ -1,21 +1,19 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
 
 module.exports = {
+  context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/index.js'
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-    historyApiFallback: true,
-    host: '0.0.0.0'
-  },
   output: {
     filename: '[name].bundle.js',
-    path: path.join(__dirname, 'dist')
+    path: resolve('dist')
   },
   module: {
     rules: [{
@@ -47,10 +45,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, 'public/index.html')
-    }),
-    new UglifyJSPlugin({
-      sourceMap: true
+      template: resolve('public/index.html')
     })
   ]
 };
