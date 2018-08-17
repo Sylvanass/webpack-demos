@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'production',
   entry: {
     app: './src/index.js',
   },
@@ -28,7 +29,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Hot Module Replacement',
+      title: 'Tree shaking',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
